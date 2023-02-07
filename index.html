@@ -82,7 +82,7 @@
     const errorMessage = document.querySelectorAll('.error-message');
 
     form.addEventListener('submit', (e) => {
-        let messages = [];
+        let numErrors = 0;
         let error = '';
 
         //Clear all previous errors
@@ -93,28 +93,25 @@
         //Password validation
         if(password.value.length < 8){
             error = 'Password must be atleast 8 characters';
-            messages.push(error);
+            numErrors += 1;
             password.classList.add('input-error');
             errorMessage.forEach(a => { if(a.id == 'e5') a.textContent = error;});
-        }
-
-        if(password.value.length >= 20){
+        }else if(password.value.length >= 20){
             error = 'Password must be less than 20 characters';
-            messages.push(error);
+            numErrors += 1;
             password.classList.add('input-error');
             errorMessage.forEach(a => { if(a.id == 'e5') a.textContent = error;});
-        }
-
-        if(password.value.length >= 8 && password.value.length < 20){
-            if(password.value != confirmPassword.value){
+        }else if(password.value != confirmPassword.value){
                 error = 'Passwords must match';
-                messages.push(error);
+                numErrors += 1;
                 password.classList.add('input-error');
                 confirmPassword.classList.add('input-error');
                 errorMessage.forEach(a => { if(a.id == 'e6' || a.id == 'e5') a.textContent = error;});
             }
-        }
-        if(messages.length > 0){ /*Stops from submitting*/
+        
+
+        //Stops from submitting
+        if(numErrors > 0){
             confirmPassword.value = '';
             e.preventDefault();
         }
