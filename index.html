@@ -77,16 +77,20 @@
     const lastName = document.getElementById("last-name");
     const email = document.getElementById("email");
     const phone = document.getElementById("number");
-
-    let errorMessage = document.querySelectorAll('.error-message');
+    const password = document.getElementById("password");
+    const confirmPassword = document.getElementById("confirm-pwd");
+    const errorMessage = document.querySelectorAll('.error-message');
 
     form.addEventListener('submit', (e) => {
         let messages = [];
         let error = '';
 
-        let password = document.getElementById("password");
-        let confirmPassword = document.getElementById("confirm-pwd");
+        //Clear all previous errors
+        password.classList.remove('input-error');
+        confirmPassword.classList.remove('input-error');
+        errorMessage.forEach(a => a.textContent = '');
 
+        //Password validation
         if(password.value.length < 8){
             error = 'Password must be atleast 8 characters';
             messages.push(error);
@@ -107,12 +111,11 @@
                 messages.push(error);
                 password.classList.add('input-error');
                 confirmPassword.classList.add('input-error');
-                errorMessage.forEach(a => { if(a.id == 'e6') a.textContent = error;});
+                errorMessage.forEach(a => { if(a.id == 'e6' || a.id == 'e5') a.textContent = error;});
             }
         }
         if(messages.length > 0){ /*Stops from submitting*/
             confirmPassword.value = '';
-            password.value = '';
             e.preventDefault();
         }
     });
