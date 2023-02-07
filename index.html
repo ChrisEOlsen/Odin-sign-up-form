@@ -29,39 +29,97 @@
                         <div class="column">
                         <label for="first-name">FIRST NAME</label>
                         <input id="first-name" name="user-first-name">
+                        <div id="e1" class="error-message"></div>
                     </div>
                         <div class="column">
                             <label for="last-name">LAST NAME</label>
                             <input id="last-name" name="user-last-name">
+                            <div id="e2" class="error-message"></div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="column">
                             <label for="email">EMAIL</label>
                             <input type="email" id="email" name="user-email">
+                            <div id="e3" class="error-message"></div>
                         </div>
                         <div class="column">
                             <label for="number">PHONE NUMBER</label>
                             <input type="number" id="number" name="user-number">
+                            <div id="e4" class="error-message"></div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="column">
                             <label for="password">PASSWORD</label>
                             <input type="password" id="password" name="user-pwd">
+                            <div id="e5" class="error-message"></div>
                         </div>
                         <div class="column">
                             <label for="confirm-pwd">CONFIRM PASSWORD</label>
                             <input type="password" id="confirm-pwd" name="user-confirm-pwd">
+                            <div id="e6" class="error-message"></div>
                         </div>
                     </div>
                 </fieldset>
             </form>
         </div>
-    
-
-        <button form="my-form" type="submit">Create Account</button>
+        <button type="submit" form="my-form">Create Account</button>
         <p>Already have an account? <a href="">Log in</a></p>
     </div>
 </body>
+
+<script>
+
+    const form = document.getElementById("my-form");
+
+    const firstName = document.getElementById("first-name");
+    const lastName = document.getElementById("last-name");
+    const email = document.getElementById("email");
+    const phone = document.getElementById("number");
+
+    let errorMessage = document.querySelectorAll('.error-message');
+
+    form.addEventListener('submit', (e) => {
+        let messages = [];
+        let error = '';
+
+        let password = document.getElementById("password");
+        let confirmPassword = document.getElementById("confirm-pwd");
+
+        if(password.value.length < 8){
+            error = 'Password must be atleast 8 characters';
+            messages.push(error);
+            password.classList.add('input-error');
+            errorMessage.forEach(a => { if(a.id == 'e5') a.textContent = error;});
+        }
+
+        if(password.value.length >= 20){
+            error = 'Password must be less than 20 characters';
+            messages.push(error);
+            password.classList.add('input-error');
+            errorMessage.forEach(a => { if(a.id == 'e5') a.textContent = error;});
+        }
+
+        if(password.value.length >= 8 && password.value.length < 20){
+            if(password.value != confirmPassword.value){
+                error = 'Passwords must match';
+                messages.push(error);
+                password.classList.add('input-error');
+                confirmPassword.classList.add('input-error');
+                errorMessage.forEach(a => { if(a.id == 'e6') a.textContent = error;});
+            }
+        }
+        if(messages.length > 0){ /*Stops from submitting*/
+            confirmPassword.value = '';
+            password.value = '';
+            e.preventDefault();
+        }
+    });
+
+
+
+
+
+</script>
 </html>

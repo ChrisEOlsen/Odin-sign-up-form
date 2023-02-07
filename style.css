@@ -46,7 +46,7 @@ body{
     display: flex;
     flex-direction: row;
     gap: 150px;
-    margin-bottom: 20px;
+    margin-bottom: 36px;
 }
 .column{
     flex: 1;
@@ -57,12 +57,9 @@ fieldset {
     border: none;
     margin-left: -60px;
     padding-left: 60px;
-    padding-bottom: 36px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3) ;
 }
 fieldset > *{
-    display: flex;
-    flex-direction: column;
     width: 14vw;
 }
 input{
@@ -71,6 +68,14 @@ input{
     font-size: 1em;
     font-family:'Courier New', Courier, monospace;
 }
+input:focus {
+    outline: none;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+}
+.input-error{
+    border: 2px solid rgba(253, 47, 47, 0.8);
+}
+
 
 button{
     width: 10vw;
