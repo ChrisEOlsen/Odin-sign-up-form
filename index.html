@@ -92,22 +92,28 @@
 
         //Password validation
         if(password.value.length < 8){
+
             error = 'Password must be atleast 8 characters';
             numErrors += 1;
             password.classList.add('input-error');
             errorMessage.forEach(a => { if(a.id == 'e5') a.textContent = error;});
+
         }else if(password.value.length >= 20){
+
             error = 'Password must be less than 20 characters';
             numErrors += 1;
             password.classList.add('input-error');
             errorMessage.forEach(a => { if(a.id == 'e5') a.textContent = error;});
+
         }else if(password.value != confirmPassword.value){
-                error = 'Passwords must match';
-                numErrors += 1;
-                password.classList.add('input-error');
-                confirmPassword.classList.add('input-error');
-                errorMessage.forEach(a => { if(a.id == 'e6' || a.id == 'e5') a.textContent = error;});
-            }
+
+            error = 'Passwords must match';
+            numErrors += 1;
+            password.classList.add('input-error');
+            confirmPassword.classList.add('input-error');
+            errorMessage.forEach(a => { if(a.id == 'e6' || a.id == 'e5') a.textContent = error;});
+
+        }
         
 
         //Stops from submitting
