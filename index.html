@@ -86,11 +86,8 @@
     form.addEventListener('submit', (e) => {
         //Clear all previous errors and error styles
         numErrors = 0;
-        form.userFirstName.classList.remove('input-error');
-        form.userLastName.classList.remove('input-error');
-        form.userEmail.classList.remove('input-error');
-        form.userPwd.classList.remove('input-error');
-        form.userConfirmPwd.classList.remove('input-error');
+        const elementArray = [form.userFirstName, form.userLastName, form.userEmail, form.userPwd, form.userConfirmPwd];
+        elementArray.forEach(a => a.classList.remove('input-error'));
         errorMessage.forEach(a => a.textContent = '');
 
         //First Name
