@@ -34,12 +34,13 @@ body{
 }
 .sales-pitch{
     width: 50vw;
-    font-size: 1vw;
+    font-size: 1em;
 }
 .sales-pitch :nth-child(2){
     margin-top: 50px;
     margin-bottom: 60px;
     font-weight: 700;
+    font-size: 1.2em;
 }
 
 .row{
@@ -57,7 +58,7 @@ fieldset {
     border: none;
     margin-left: -60px;
     padding-left: 60px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3) ;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
 }
 fieldset > *{
     width: 14vw;
@@ -75,6 +76,13 @@ input:focus {
 .input-error{
     border: 2px solid rgba(253, 47, 47, 0.8);
 }
+.error-message{
+    margin-top: 2px;
+    margin-left: 4px;
+    font-size: 12px;
+    color: red;
+    font-style: italic;
+}
 
 
 button{
@@ -85,7 +93,7 @@ button{
     border-radius: 4px;
     background-color: green;
     color: white;
-    font-size: 0.8vw;
+    font-size: 1em;
     font-family:'Courier New', Courier, monospace;
 }
 button:hover{

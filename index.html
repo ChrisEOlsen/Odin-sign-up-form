@@ -40,7 +40,7 @@
                     <div class="row">
                         <div class="column">
                             <label for="email">EMAIL</label>
-                            <input type="email" id="email" name="user-email">
+                            <input id="email" name="user-email">
                             <div id="e3" class="error-message"></div>
                         </div>
                         <div class="column">
@@ -52,7 +52,7 @@
                     <div class="row">
                         <div class="column">
                             <label for="password">PASSWORD</label>
-                            <input type="password" id="password" name="user-pwd">
+                            <input type="password" id="password" name="user-pwd" placeholder=" Atleast 8 characters">
                             <div id="e5" class="error-message"></div>
                         </div>
                         <div class="column">
@@ -72,7 +72,6 @@
 <script>
 
     const form = document.getElementById("my-form");
-
     const firstName = document.getElementById("first-name");
     const lastName = document.getElementById("last-name");
     const email = document.getElementById("email");
@@ -80,30 +79,65 @@
     const password = document.getElementById("password");
     const confirmPassword = document.getElementById("confirm-pwd");
     const errorMessage = document.querySelectorAll('.error-message');
+    let error = '';
+    let numErrors;
+
+    function addErrorMessage(element, placement){
+        numErrors += 1;
+        element.classList.add('input-error');
+        errorMessage.forEach(a => {if(a.id == placement) a.textContent = error;});
+    }
+
 
     form.addEventListener('submit', (e) => {
-        let numErrors = 0;
-        let error = '';
-
         //Clear all previous errors
+        numErrors = 0;
+        firstName.classList.remove('input-error');
+        lastName.classList.remove('input-error');
+        email.classList.remove('input-error');
         password.classList.remove('input-error');
         confirmPassword.classList.remove('input-error');
         errorMessage.forEach(a => a.textContent = '');
+
+        //First Name
+        let noSpace = firstName.value.replaceAll(' ','');
+        if(noSpace == '' || noSpace == null){
+
+            error = 'Please enter first name';
+            addErrorMessage(firstName,'e1');
+            firstName.value = '';
+            
+        }
+
+        //Last Name
+        noSpace = lastName.value.replaceAll(' ','');
+        if(noSpace == '' || noSpace == null){
+
+            error = 'Please enter last name';
+            addErrorMessage(lastName,'e2');
+            lastName.value = '';
+
+        }
+
+        //Email validation
+        const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if(!email.value.match(mailformat)){
+
+            error = 'Email is not valid';
+            addErrorMessage(email,'e3');
+
+        }
 
         //Password validation
         if(password.value.length < 8){
 
             error = 'Password must be atleast 8 characters';
-            numErrors += 1;
-            password.classList.add('input-error');
-            errorMessage.forEach(a => { if(a.id == 'e5') a.textContent = error;});
+            addErrorMessage(password,'e5');
 
         }else if(password.value.length >= 20){
 
-            error = 'Password must be less than 20 characters';
-            numErrors += 1;
-            password.classList.add('input-error');
-            errorMessage.forEach(a => { if(a.id == 'e5') a.textContent = error;});
+            error = 'Password must be less than 20 characters';            
+            addErrorMessage(password,'e5');
 
         }else if(password.value != confirmPassword.value){
 
@@ -114,7 +148,6 @@
             errorMessage.forEach(a => { if(a.id == 'e6' || a.id == 'e5') a.textContent = error;});
 
         }
-        
 
         //Stops from submitting
         if(numErrors > 0){
@@ -122,10 +155,6 @@
             e.preventDefault();
         }
     });
-
-
-
-
-
+    
 </script>
 </html>
