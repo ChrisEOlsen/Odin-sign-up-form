@@ -28,36 +28,36 @@
                     <div class="row">
                         <div class="column">
                         <label for="first-name">FIRST NAME</label>
-                        <input id="first-name" name="user-first-name">
+                        <input id="first-name" name="userFirstName">
                         <div id="e1" class="error-message"></div>
                     </div>
                         <div class="column">
                             <label for="last-name">LAST NAME</label>
-                            <input id="last-name" name="user-last-name">
+                            <input id="last-name" name="userLastName">
                             <div id="e2" class="error-message"></div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="column">
                             <label for="email">EMAIL</label>
-                            <input id="email" name="user-email">
+                            <input id="email" name="userEmail">
                             <div id="e3" class="error-message"></div>
                         </div>
                         <div class="column">
                             <label for="number">PHONE NUMBER</label>
-                            <input type="number" id="number" name="user-number">
+                            <input type="number" id="number" name="userNumber">
                             <div id="e4" class="error-message"></div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="column">
                             <label for="password">PASSWORD</label>
-                            <input type="password" id="password" name="user-pwd" placeholder=" Atleast 8 characters">
+                            <input type="password" id="password" name="userPwd" placeholder=" Atleast 8 characters">
                             <div id="e5" class="error-message"></div>
                         </div>
                         <div class="column">
                             <label for="confirm-pwd">CONFIRM PASSWORD</label>
-                            <input type="password" id="confirm-pwd" name="user-confirm-pwd">
+                            <input type="password" id="confirm-pwd" name="userConfirmPwd">
                             <div id="e6" class="error-message"></div>
                         </div>
                     </div>
@@ -72,12 +72,6 @@
 <script>
 
     const form = document.getElementById("my-form");
-    const firstName = document.getElementById("first-name");
-    const lastName = document.getElementById("last-name");
-    const email = document.getElementById("email");
-    const phone = document.getElementById("number");
-    const password = document.getElementById("password");
-    const confirmPassword = document.getElementById("confirm-pwd");
     const errorMessage = document.querySelectorAll('.error-message');
     let error = '';
     let numErrors;
@@ -90,68 +84,68 @@
 
 
     form.addEventListener('submit', (e) => {
-        //Clear all previous errors
+        //Clear all previous errors and error styles
         numErrors = 0;
-        firstName.classList.remove('input-error');
-        lastName.classList.remove('input-error');
-        email.classList.remove('input-error');
-        password.classList.remove('input-error');
-        confirmPassword.classList.remove('input-error');
+        form.userFirstName.classList.remove('input-error');
+        form.userLastName.classList.remove('input-error');
+        form.userEmail.classList.remove('input-error');
+        form.userPwd.classList.remove('input-error');
+        form.userConfirmPwd.classList.remove('input-error');
         errorMessage.forEach(a => a.textContent = '');
 
         //First Name
-        let noSpace = firstName.value.replaceAll(' ','');
+        let noSpace = form.userFirstName.value.replaceAll(' ','');
         if(noSpace == '' || noSpace == null){
 
             error = 'Please enter first name';
-            addErrorMessage(firstName,'e1');
-            firstName.value = '';
-            
+            addErrorMessage(form.userFirstName,'e1');
+            form.userFirstName.value = '';
+
         }
 
         //Last Name
-        noSpace = lastName.value.replaceAll(' ','');
+        noSpace = form.userLastName.value.replaceAll(' ','');
         if(noSpace == '' || noSpace == null){
 
             error = 'Please enter last name';
-            addErrorMessage(lastName,'e2');
-            lastName.value = '';
+            addErrorMessage(form.userLastName,'e2');
+            form.userLastName.value = '';
 
         }
 
         //Email validation
         const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        if(!email.value.match(mailformat)){
+        if(!form.userEmail.value.match(mailformat)){
 
             error = 'Email is not valid';
-            addErrorMessage(email,'e3');
+            addErrorMessage(form.userEmail,'e3');
 
         }
 
         //Password validation
-        if(password.value.length < 8){
+        if(form.userPwd.value.length < 8){
 
             error = 'Password must be atleast 8 characters';
-            addErrorMessage(password,'e5');
+            addErrorMessage(form.userPwd,'e5');
 
-        }else if(password.value.length >= 20){
+        }else if(form.userPwd.value.length >= 20){
 
             error = 'Password must be less than 20 characters';            
-            addErrorMessage(password,'e5');
+            addErrorMessage(form.userPwd,'e5');
 
-        }else if(password.value != confirmPassword.value){
+        }else if(form.userPwd.value != form.userConfirmPwd.value){
 
             error = 'Passwords must match';
             numErrors += 1;
-            password.classList.add('input-error');
-            confirmPassword.classList.add('input-error');
+            form.userPwd.classList.add('input-error');
+            form.userConfirmPwd.classList.add('input-error');
             errorMessage.forEach(a => { if(a.id == 'e6' || a.id == 'e5') a.textContent = error;});
 
         }
 
         //Stops from submitting
         if(numErrors > 0){
-            confirmPassword.value = '';
+            form.userConfirmPwd.value = '';
             e.preventDefault();
         }
     });
