@@ -1,155 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign up Form</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div class="left-screen">
-        <img src="background.jpg" alt="picture of plant">
-        <div class="logo-container"><h1>LOGO HERE</h1></div>
+      <img src="background.jpg" alt="picture of plant" />
+      <div class="logo-container"><h1>LOGO HERE</h1></div>
     </div>
     <div class="right-screen">
-        <div class="sales-pitch">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-                incididunt ut labore et dolore magna aliqua.  Ut enim ad minim veniam, 
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse 
-                cillum dolore eu fugiat nulla pariatur.</p>
-            <p>You know you want to.</p>
-        </div>
-        <div class="form-container">
-            <form id="my-form" action="" method="post">
-                <fieldset>
-                    <h2>Sign up now!</h2>   
-                    <div class="row">
-                        <div class="column">
-                            <label for="first-name">FIRST NAME</label>
-                            <input id="first-name" name="userFirstName">
-                            <div id="e1" class="error-message"></div>
-                        </div>
-                        <div class="column">
-                            <label for="last-name">LAST NAME</label>
-                            <input id="last-name" name="userLastName">
-                            <div id="e2" class="error-message"></div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="column">
-                            <label for="email">EMAIL</label>
-                            <input id="email" name="userEmail">
-                            <div id="e3" class="error-message"></div>
-                        </div>
-                        <div class="column">
-                            <label for="number">PHONE NUMBER</label>
-                            <input type="number" id="number" name="userNumber">
-                            <div id="e4" class="error-message"></div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="column">
-                            <label for="password">PASSWORD</label>
-                            <input type="password" id="password" name="userPwd" placeholder=" Atleast 8 characters">
-                            <div id="e5" class="error-message"></div>
-                        </div>
-                        <div class="column">
-                            <label for="confirm-pwd">CONFIRM PASSWORD</label>
-                            <input type="password" id="confirm-pwd" name="userConfirmPwd">
-                            <div id="e6" class="error-message"></div>
-                        </div>
-                    </div>
-                </fieldset>
-            </form>
-        </div>
-        <button type="submit" form="my-form">Create Account</button>
-        <p>Already have an account? <a href="">Log in</a></p>
+      <div class="sales-pitch">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur.
+        </p>
+        <p>You know you want to.</p>
+      </div>
+      <div class="form-container">
+        <form id="my-form" action="" method="post">
+          <fieldset>
+            <h2>Sign up now!</h2>
+            <div class="row">
+              <div class="column">
+                <label for="first-name">FIRST NAME</label>
+                <input id="first-name" name="userFirstName" />
+                <div id="e1" class="error-message"></div>
+              </div>
+              <div class="column">
+                <label for="last-name">LAST NAME</label>
+                <input id="last-name" name="userLastName" />
+                <div id="e2" class="error-message"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="column">
+                <label for="email">EMAIL</label>
+                <input id="email" name="userEmail" />
+                <div id="e3" class="error-message"></div>
+              </div>
+              <div class="column">
+                <label for="number">PHONE NUMBER</label>
+                <input type="number" id="number" name="userNumber" />
+                <div id="e4" class="error-message"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="column">
+                <label for="password">PASSWORD</label>
+                <input
+                  type="password"
+                  id="password"
+                  name="userPwd"
+                  placeholder=" Atleast 8 characters"
+                />
+                <div id="e5" class="error-message"></div>
+              </div>
+              <div class="column">
+                <label for="confirm-pwd">CONFIRM PASSWORD</label>
+                <input type="password" id="confirm-pwd" name="userConfirmPwd" />
+                <div id="e6" class="error-message"></div>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+      <button type="submit" form="my-form">Create Account</button>
+      <p>Already have an account? <a href="">Log in</a></p>
     </div>
-</body>
+  </body>
 
-<script>
-
+  <script>
     const form = document.getElementById("my-form");
-    const errorMessage = document.querySelectorAll('.error-message');
-    let error = '';
+    const errorMessage = document.querySelectorAll(".error-message");
+    let error = "";
     let numErrors;
 
-    function addErrorMessage(element, placement){
-        numErrors += 1;
-        element.classList.add('input-error');
-        errorMessage.forEach(a => {if(a.id == placement) a.textContent = error;});
+    function addErrorMessage(element, placement) {
+      numErrors += 1;
+      element.classList.add("input-error");
+      errorMessage.forEach((a) => {
+        if (a.id == placement) a.textContent = error;
+      });
     }
 
+    form.addEventListener("submit", (e) => {
+      //Clear all previous errors and error styles
+      numErrors = 0;
+      const elementArray = [
+        form.userFirstName,
+        form.userLastName,
+        form.userEmail,
+        form.userPwd,
+        form.userConfirmPwd,
+      ];
+      elementArray.forEach((a) => a.classList.remove("input-error"));
+      errorMessage.forEach((a) => (a.textContent = ""));
 
-    form.addEventListener('submit', (e) => {
-        //Clear all previous errors and error styles
-        numErrors = 0;
-        const elementArray = [form.userFirstName, form.userLastName, form.userEmail, form.userPwd, form.userConfirmPwd];
-        elementArray.forEach(a => a.classList.remove('input-error'));
-        errorMessage.forEach(a => a.textContent = '');
+      //First Name
+      let noSpace = form.userFirstName.value.replaceAll(" ", "");
+      if (noSpace == "" || noSpace == null) {
+        error = "Please enter first name";
+        addErrorMessage(form.userFirstName, "e1");
+        form.userFirstName.value = "";
+      } else {
+        //get rid of spaces in names
+        form.userFirstName.value = noSpace;
+      }
 
-        //First Name
-        let noSpace = form.userFirstName.value.replaceAll(' ','');
-        if(noSpace == '' || noSpace == null){
+      //Last Name
+      noSpace = form.userLastName.value.replaceAll(" ", "");
+      if (noSpace == "" || noSpace == null) {
+        error = "Please enter last name";
+        addErrorMessage(form.userLastName, "e2");
+        form.userLastName.value = "";
+      } else {
+        form.userLastName.value = noSpace;
+      }
 
-            error = 'Please enter first name';
-            addErrorMessage(form.userFirstName,'e1');
-            form.userFirstName.value = '';
+      //Email validation
+      const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+      if (!form.userEmail.value.match(mailformat)) {
+        error = "Email is not valid";
+        addErrorMessage(form.userEmail, "e3");
+      }
 
-        }else{ //get rid of spaces in names
-            form.userFirstName.value = noSpace;
-        }
+      //Password validation
+      if (form.userPwd.value.length < 8) {
+        error = "Password must be atleast 8 characters";
+        addErrorMessage(form.userPwd, "e5");
+      } else if (form.userPwd.value.length >= 20) {
+        error = "Password must be less than 20 characters";
+        addErrorMessage(form.userPwd, "e5");
+      } else if (form.userPwd.value != form.userConfirmPwd.value) {
+        error = "Passwords must match";
+        numErrors += 1;
+        form.userPwd.classList.add("input-error");
+        form.userConfirmPwd.classList.add("input-error");
+        errorMessage.forEach((a) => {
+          if (a.id == "e6" || a.id == "e5") a.textContent = error;
+        });
+      }
 
-        //Last Name
-        noSpace = form.userLastName.value.replaceAll(' ','');
-        if(noSpace == '' || noSpace == null){
-
-            error = 'Please enter last name';
-            addErrorMessage(form.userLastName,'e2');
-            form.userLastName.value = '';
-
-        } else {
-            form.userLastName.value = noSpace;
-        }
-
-        //Email validation
-        const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        if(!form.userEmail.value.match(mailformat)){
-
-            error = 'Email is not valid';
-            addErrorMessage(form.userEmail,'e3');
-
-        }
-
-        //Password validation
-        if(form.userPwd.value.length < 8){
-
-            error = 'Password must be atleast 8 characters';
-            addErrorMessage(form.userPwd,'e5');
-
-        }else if(form.userPwd.value.length >= 20){
-
-            error = 'Password must be less than 20 characters';            
-            addErrorMessage(form.userPwd,'e5');
-
-        }else if(form.userPwd.value != form.userConfirmPwd.value){
-
-            error = 'Passwords must match';
-            numErrors += 1;
-            form.userPwd.classList.add('input-error');
-            form.userConfirmPwd.classList.add('input-error');
-            errorMessage.forEach(a => { if(a.id == 'e6' || a.id == 'e5') a.textContent = error;});
-
-        }
-
-        //Stops from submitting
-        if(numErrors > 0){
-            form.userConfirmPwd.value = '';
-            e.preventDefault();
-        }
+      //Stops from submitting
+      if (numErrors > 0) {
+        form.userConfirmPwd.value = "";
+        e.preventDefault();
+      }
     });
-    
-</script>
+  </script>
 </html>
